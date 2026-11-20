@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunsbell the Bunny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a sweet, bouncy link page for a cartoon gym bunny and the teen who makes him
+   IDEA a gym-class poster: royal blue walls, caramel bunny, pink sweatband accents
+   PICTURE Bunsbell standing big in a cream spotlight, then his three faces as the follow cards
+   COLOUR royal blue #2F55E4 fields, caramel #DFB487 support, sweatband pink #FF6F9F accent, cream #FFF7EC
+   TYPE Fredoka (round, chunky, cartoon) + Nunito
+   LAYOUT laptop: headline and buttons left, Bunsbell large right; phone: headline, Bunsbell, buttons, then stacked cards */
+:root{color-scheme:light dark;--blue:#2F55E4;--blue-deep:light-dark(#1E3DB8,#16298a);--bg:light-dark(#FFF7EC,#0E1533);--card:light-dark(#FFFFFF,#18214A);--ink:light-dark(#14183A,#F3F4FF);--muted:light-dark(#4A4F75,#B8BEE6);--caramel:#DFB487;--caramel-band:light-dark(#F2D6B3,#2A2347);--pink:#FF6F9F;--pink-ink:#3B0A1E;--line:light-dark(#EAD9C2,#2B3566)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Fredoka,Nunito,system-ui,sans-serif;font-weight:600;line-height:1.05;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 24px;border-radius:999px;font:700 17px/1.1 Nunito,system-ui,sans-serif;text-decoration:none;border:3px solid transparent;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.card:focus-visible{outline:3px solid #FFD84D;outline-offset:3px}
+.btn-pink{background:var(--pink);color:var(--pink-ink)}
+.btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.85)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-sam{position:relative;overflow:hidden;background:#FFD84D;color:#14183A;font-size:18px;min-height:56px;padding:12px 26px;border-color:#fff;box-shadow:0 5px 0 #C9A21E}
+.btn-sam b{font-weight:800}
+.btn-sam .arr{display:inline-block}
+.btn-sam::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.8) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+.sam-link{color:#FFD84D;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.nav-sam{background:#FFD84D;color:#14183A !important;border-radius:999px;padding:8px 14px !important;opacity:1 !important}
+.float{position:fixed;right:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:10px 20px 10px 14px;border-radius:999px;background:#14183A;color:#fff;font:700 16px/1.1 Nunito,system-ui,sans-serif;text-decoration:none;border:3px solid #FFD84D;box-shadow:0 8px 24px rgba(20,24,58,.35)}
+.float b{color:#FFD84D;font-weight:800}
+.float .dot{position:relative;width:12px;height:12px;border-radius:50%;background:#FF6F9F;flex:none}
+.float:focus-visible{outline:3px solid #fff;outline-offset:3px}
+body{padding-bottom:88px}
+
+/* top bar */
+.top{background:var(--blue);color:#fff}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;padding:14px max(5vw,16px) 0;max-width:calc(1180px + 10vw);margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font:600 20px/1 Fredoka,system-ui,sans-serif;text-decoration:none}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid #fff}
+.nav ul{display:flex;flex-wrap:wrap;gap:4px 18px;list-style:none;margin:0;padding:0}
+.nav ul a{display:inline-block;padding:10px 2px;font-weight:700;text-decoration:none;opacity:.92}
+.nav ul a:hover{text-decoration:underline}
+
+/* hero */
+.hero{background:var(--blue);color:#fff;padding-top:clamp(20px,3vw,40px);padding-bottom:0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"text pic" "acts pic";column-gap:clamp(24px,4vw,56px);align-items:end}
+.hero-text{grid-area:text;align-self:end;padding-top:clamp(8px,3vw,40px)}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:700}
+.hero h1 span{display:block}
+.lede{font-size:clamp(17px,1.6vw,20px);max-width:34em;margin:20px 0 0;color:rgba(255,255,255,.93)}
+.acts{grid-area:acts;position:relative;z-index:2;align-self:start;display:flex;flex-wrap:wrap;gap:12px;padding:28px 0 clamp(36px,5vw,72px)}
+.stage{grid-area:pic;position:relative;display:grid;place-items:end center;min-height:clamp(380px,46vw,560px)}
+.spot{position:absolute;left:50%;bottom:-18%;width:min(118%,620px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 50% 42%,#FFFDF8 0 52%,#F7E7D2 70%,#EBD3B4 100%)}
+.floor{position:absolute;left:50%;bottom:22px;width:min(70%,360px);height:26px;transform:translateX(-50%);border-radius:50%;background:rgba(20,24,58,.16)}
+.bun{position:relative;width:clamp(210px,24vw,310px);margin-bottom:26px;transform-origin:50% 100%;filter:drop-shadow(0 6px 0 rgba(20,24,58,.08))}
+.bubble{position:absolute;top:clamp(10px,3vw,44px);left:0;z-index:1;background:#fff;color:#14183A;transform-origin:85% 100%;font:600 clamp(17px,1.7vw,21px)/1.15 Fredoka,system-ui,sans-serif;padding:12px 18px;border-radius:22px 22px 6px 22px;box-shadow:0 4px 0 rgba(20,24,58,.12);white-space:nowrap}
+.bubble::after{content:"";position:absolute;right:14px;bottom:-12px;border:12px solid transparent;border-top-color:#fff;border-right-width:4px}
+@media (prefers-reduced-motion:no-preference){.btn-sam{animation:ring 2.4s ease-out infinite}.btn-sam::after{animation:shine 3.2s ease-in-out infinite}.btn-sam .arr,.float .arr{animation:nudge 1.2s ease-in-out infinite}.float{animation:floatin .7s cubic-bezier(.3,1.5,.5,1) .6s both}.float .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#FF6F9F;animation:ping 1.6s ease-out infinite}.float:hover{transform:translateY(-3px)}@keyframes ring{0%{box-shadow:0 5px 0 #C9A21E,0 0 0 0 rgba(255,216,77,.75)}70%{box-shadow:0 5px 0 #C9A21E,0 0 0 18px rgba(255,216,77,0)}100%{box-shadow:0 5px 0 #C9A21E,0 0 0 0 rgba(255,216,77,0)}}@keyframes shine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}@keyframes floatin{0%{transform:translateY(120px);opacity:0}100%{transform:translateY(0);opacity:1}}@keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.8);opacity:0}}.bun{animation:hop 3s ease-in-out infinite}.floor{animation:shadow 3s ease-in-out infinite}.bubble.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}.card:hover .face img{animation:wiggle .5s ease-in-out}.lines li:hover{animation:wiggle .5s ease-in-out}@keyframes hop{0%,62%,100%{transform:translateY(0) scale(1,1)}68%{transform:translateY(0) scale(1.06,.93)}76%{transform:translateY(-22px) scale(.97,1.04) rotate(-2deg)}84%{transform:translateY(0) scale(1.05,.95)}90%{transform:translateY(-6px) scale(1,1) rotate(1deg)}95%{transform:translateY(0)}}@keyframes shadow{0%,62%,100%{transform:translateX(-50%) scale(1)}76%{transform:translateX(-50%) scale(.82);opacity:.6}84%{transform:translateX(-50%) scale(1.05)}}@keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}}
+
+/* watch */
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:8px 24px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(34px,4.4vw,52px)}
+.sec-head p{margin:0;color:var(--muted);max-width:30em}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.card{display:grid;grid-template-rows:auto 1fr;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:28px;overflow:hidden;transition:transform .15s ease,box-shadow .15s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 0 var(--accent)}
+.card .face{background:var(--blue);aspect-ratio:1/1}
+.card .face img{width:100%;height:100%;object-fit:cover}
+.card .body{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px}
+.card h3{font-size:30px}
+.card .handle{color:var(--muted);font-weight:700}
+.card .go{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;font-weight:800;background:var(--accent);color:var(--accent-ink)}
+.tt{--accent:#14183A;--accent-ink:#fff}
+.ig{--accent:#FF6F9F;--accent-ink:#3B0A1E}
+.yt{--accent:#2F55E4;--accent-ink:#fff}
+:root[data-theme=dark] .tt{--accent:#F3F4FF;--accent-ink:#14183A}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .tt{--accent:#F3F4FF;--accent-ink:#14183A}}
+
+/* meet */
+.meet{background:var(--caramel-band)}
+.meet-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}
+.meet h2{font-size:clamp(34px,4.4vw,52px);margin-bottom:16px}
+.meet p{margin:0 0 14px;max-width:32em}
+.lines{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding:0;list-style:none}
+.lines li{font:600 19px/1 Fredoka,system-ui,sans-serif;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:12px 18px}
+.turn{background:var(--card);border:2px solid var(--line);border-radius:28px;overflow:hidden}
+.turn img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.turn figcaption{font:600 clamp(18px,1.8vw,22px)/1.2 Fredoka,system-ui,sans-serif;color:var(--ink);padding:14px 20px 16px;text-align:center}
+
+/* about */
+.about{background:var(--blue-deep);color:#fff}
+.about-grid{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,3vw,40px);align-items:center}
+.about .me{width:clamp(96px,11vw,140px);aspect-ratio:1;border-radius:50%;border:4px solid #fff;overflow:hidden;background:var(--blue)}
+.about .me img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:clamp(30px,3.6vw,44px);margin-bottom:10px}
+.about p{margin:0;max-width:38em;color:rgba(255,255,255,.92)}
+
+/* footer */
+footer{padding:28px max(5vw,16px) 40px;color:var(--muted);font-size:15px}
+.foot{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:space-between}
+.foot ul{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0;padding:0}
+.foot a{font-weight:700;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+@media (max-width:860px){.cards{grid-template-columns:minmax(0,1fr)}.card{grid-template-columns:minmax(0,150px) minmax(0,1fr);grid-template-rows:none}.card .face{aspect-ratio:auto;min-height:100%}.card .body{justify-content:center}.meet-grid{grid-template-columns:minmax(0,1fr)}.about-grid{grid-template-columns:auto minmax(0,1fr)}.about .btn{grid-column:1/-1;justify-self:start}}
+@media (max-width:640px){.btn-sam{font-size:16px;padding:12px 16px;gap:8px}.float{left:16px;right:16px;justify-content:center}.hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "pic" "acts"}.stage{min-height:420px;margin-top:16px;overflow:hidden;border-radius:0 0 28px 28px}.spot{bottom:-40%}.bun{width:210px}.acts{padding-top:24px}.acts .btn{flex:1 1 100%}.bubble{left:4px;top:8px}.card{grid-template-columns:minmax(0,112px) minmax(0,1fr)}.card h3{font-size:26px}.card .body{padding:16px}.about-grid{grid-template-columns:minmax(0,1fr)}.about .btn{width:100%}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top"><img src="img/face-classic.webp" alt="">Bunsbell the Bunny</a>
+    <ul>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#meet">Meet Bunsbell</a></li>
+      <li><a href="#about">About me</a></li>
+      <li><a class="nav-sam" href="https://www.instagram.com/samlambertus/">@samlambertus</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="band hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1 id="hero-title"><span>Meet the</span> <span>17 year old</span> <span>AI artist</span></h1>
+        <p class="lede">I'm Sam (<a class="sam-link" href="https://www.instagram.com/samlambertus/">@samlambertus</a>), and I make Bunsbell the Bunny: a tiny gym bunny with big buns and even bigger dreams. A new animated episode drops every day.</p>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="spot"></div>
+        <div class="floor"></div>
+        <img class="bun" src="img/bunsbell-pose.webp" alt="">
+        <div class="bubble">No days off.</div>
+      </div>
+      <div class="acts">
+        <a class="btn btn-sam" href="https://www.instagram.com/samlambertus/"><span>Follow the creator <b>@samlambertus</b></span><span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-pink" href="#watch">Watch Bunsbell</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="watch" aria-labelledby="watch-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="watch-title">Watch Bunsbell every day</h2>
+        <p>Same episode on all three apps. Pick your favorite and follow along on the road to 1,000 followers.</p>
+      </div>
+      <div class="cards">
+        <a class="card tt" href="https://www.tiktok.com/@bunsbellthebunny">
+          <div class="face"><img src="img/face-music.webp" alt="Bunsbell winking and dancing with his headphones on"></div>
+          <div class="body"><h3>TikTok</h3><span class="handle">@bunsbellthebunny</span><span class="go">Follow on TikTok</span></div>
+        </a>
+        <a class="card ig" href="https://www.instagram.com/bunsbellthebunny/">
+          <div class="face"><img src="img/face-happy.webp" alt="Bunsbell laughing with his eyes closed"></div>
+          <div class="body"><h3>Instagram</h3><span class="handle">@bunsbellthebunny</span><span class="go">Follow on Instagram</span></div>
+        </a>
+        <a class="card yt" href="https://www.youtube.com/channel/UC_7-aWLITQUiCstTtMVM-zA">
+          <div class="face"><img src="img/face-locked-in.webp" alt="Bunsbell looking determined with his fist up"></div>
+          <div class="body"><h3>YouTube</h3><span class="handle">Bunsbell the Bunny</span><span class="go">Subscribe on YouTube</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band meet" id="meet" aria-labelledby="meet-title">
+    <div class="wrap meet-grid">
+      <div>
+        <h2 id="meet-title">Meet Bunsbell</h2>
+        <p>A tiny caramel bunny with famously big buns and a very serious gym routine.</p>
+        <p>He wants three things: 1,000 followers, real gains, and to be called strong instead of cute. Every day he takes something small way too seriously, it goes hilariously wrong, and he never quits.</p>
+        <ul class="lines" aria-label="Bunsbell's rules">
+          <li>No shortcuts.</li>
+          <li>No days off.</li>
+          <li>Love, Bunsbell.</li>
+        </ul>
+      </div>
+      <figure class="turn" style="margin:0">
+        <img src="img/bunsbell-mirror.webp" alt="Bunsbell at the gym, looking back over his shoulder at the mirror and flexing, his huge round buns in blue gym shorts facing the viewer">
+        <figcaption>Yes, the buns are that big.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band about" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="me"><img src="img/face-director.webp" alt=""></div>
+      <div>
+        <h2 id="about-title">Made by Sam, age 17</h2>
+        <p>I write, direct and animate every Bunsbell episode with AI tools, one day at a time. Follow my personal account to see who's behind the bunny.</p>
+      </div>
+      <a class="btn btn-sam" href="https://www.instagram.com/samlambertus/"><span>Follow <b>@samlambertus</b> on Instagram</span><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<a class="float" href="https://www.instagram.com/samlambertus/"><span class="dot" aria-hidden="true"></span>Made by <b>@samlambertus</b> <span class="arr" aria-hidden="true">→</span></a>
+
+<footer>
+  <div class="foot">
+    <span>Bunsbell the Bunny · an AI-animated character · Love, Bunsbell.</span>
+    <ul>
+      <li><a href="https://www.tiktok.com/@bunsbellthebunny">TikTok</a></li>
+      <li><a href="https://www.instagram.com/bunsbellthebunny/">Instagram</a></li>
+      <li><a href="https://www.youtube.com/channel/UC_7-aWLITQUiCstTtMVM-zA">YouTube</a></li>
+      <li><a href="https://www.instagram.com/samlambertus/">@samlambertus</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+{
+  const lines=["No days off.","No shortcuts.","Strong, not cute.","Love, Bunsbell."];
+  const b=document.querySelector('.bubble');
+  const still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i=0;
+  if(b&&!still){
+    setInterval(()=>{i=(i+1)%lines.length;b.textContent=lines[i];b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');},3000);
+  }
+}
+</script>
+
+</body>
+</html>
